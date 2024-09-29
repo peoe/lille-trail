@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Roubaix Trail
-permalink: /lille-trail/page/roubaix/final
+permalink: /page/roubaix/final
 ---
 
 # Roubaix - Das war's

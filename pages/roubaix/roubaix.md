@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Roubaix Trail
-permalink: /lille-trail/page/roubaix
+permalink: /page/roubaix
 ---
 
 # Roubaix
