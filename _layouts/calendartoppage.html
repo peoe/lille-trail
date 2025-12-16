@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
         <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
-        <script src="{{ '/js/check_sol.js' | relative_url }}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         {% include head-custom.html %}
     </head>
@@ -16,24 +15,20 @@
         <div class="wrapper">
             <ul>
                 <li class="fork"><a href="/lille-trail/">Startseite</a></li>
-                <li class="fork"><a href="/lille-trail/page/lille">Lille</a></li>
-                <li class="fork"><a href="/lille-trail/page/roubaix">Roubaix</a></li>
-                <li class="fork"><a href="/lille-trail/page/lausanne">Lausanne</a></li>
-                <li class="fork"><a href="/lille-trail/page/leipzig">Leipzig</a></li>
+                <li class="fork"><a href="/lille-trail/page/calendars">Kalender</a></li>
             </ul>
         </div>
 
         <div class="wrapper">
-            {{ content }}
-        </div>
-
-        <div class="wrapper">
-            <div id="answer">
-                Antwort:
-                <input type="text" id="input" name="input"></input>
-                <button onclick="check_solution('{{ page.sol }}', '{{ page.next }}')">Submit</button>
-                <div id="response"></div>
-            </div>
+            <h1>Verfügbare Kalender</h1>
+            {% assign calendars = site.pages | where_exp: "item", "item.path contains 'calendars'" | where_exp: "item", "item.calendar" %}
+            <ul>
+            {% for cal in calendars %}
+                <li>
+                    <a href="/lille-trail/page/calendars/{{ cal.year }}">{{ cal.year }}</a>
+                </li>
+            {% endfor %}
+            </ul>
         </div>
 
         <div class="wrapper">

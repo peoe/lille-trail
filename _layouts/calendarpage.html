@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Custom calendar CSS -->
+        <link rel="stylesheet" href="{{ '/css/calendar.css' | relative_url }}">
+        {% seo %}
+        <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        {% include head-custom.html %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <ul>
+                <li class="fork"><a href="/lille-trail/">Startseite</a></li>
+                <li class="fork"><a href="/lille-trail/page/calendars">Kalender</a></li>
+            </ul>
+        </div>
+
+        <div class="wrapper months">
+            {% for month in (01..12) %}
+                <div class="month">
+                    <a href="/lille-trail/page/calendars/{{ page.year }}/{% if month < 10 %}0{{ month }}{% else %}{{ month }}{% endif %}">
+                        {% case month %}
+                             {% when 1 %}Jan
+                             {% when 2 %}Feb
+                             {% when 3 %}Mär
+                             {% when 4 %}Apr
+                             {% when 5 %}Mai
+                             {% when 6 %}Jun
+                             {% when 7 %}Jul
+                             {% when 8 %}Aug
+                             {% when 9 %}Sep
+                             {% when 10 %}Okt
+                             {% when 11 %}Nov
+                             {% when 12 %}Dez
+                             {% else %}{{ month }}
+                        {% endcase %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div style="height: 20px;"></div>
+
+        <div class="wrapper">
+            <h1>{% unless page.calendar %}{{ page.title }}{% endunless %} {{ page.year }}</h1>
+        </div>
+
+        <div class="wrapper">
+            {{ content }}
+        </div>
+
+        <div class="wrapper">
+            <div id="footer">
+                <br><hr>
+                <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+                <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/mattgraham">mattgraham</a></span>
+            </div>
+        </div>
+    </body>
+</html>
